@@ -25,7 +25,7 @@ var testList []int
 func TestMain(t *testing.T) {
 	rand.Seed(time.Now().UnixNano())
 	testList = make([]int, 0)
-	for i := 0; i < 100*0000; i++ {
+	for i := 0; i < 10*0000; i++ {
 		testList = append(testList, rand.Intn(10000))
 	}
 }
@@ -64,6 +64,14 @@ func TestShellSort(t *testing.T) {
 		}
 	}
 }
+func TestMergeSort(t *testing.T) {
+	for _, tC := range testCases {
+		result := MergeSort(tC.test)
+		if !reflect.DeepEqual(result, tC.expect) {
+			t.Fatalf("test: %+v, expect: %+v", result, tC.expect)
+		}
+	}
+}
 
 func BenchmarkBubbleSort(b *testing.B) {
 	for i := 0; i < b.N; i++ {
@@ -86,5 +94,11 @@ func BenchmarkInsertSort(b *testing.B) {
 func BenchmarkShellSort(b *testing.B) {
 	for i := 0; i < b.N; i++ {
 		ShellSort(testList)
+	}
+}
+
+func BenchmarkMergeSort(b *testing.B) {
+	for i := 0; i < b.N; i++ {
+		MergeSort(testList)
 	}
 }
