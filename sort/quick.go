@@ -2,10 +2,6 @@ package sort
 
 // QuickSort 快速排序
 func QuickSort(list []int) {
-	l := len(list)
-	if l < 2 {
-		return
-	}
 	partition(list, 0, len(list)-1)
 }
 

@@ -25,7 +25,7 @@ var testList []int
 func TestMain(t *testing.T) {
 	rand.Seed(time.Now().UnixNano())
 	testList = make([]int, 0)
-	for i := 0; i < 1000*0000; i++ {
+	for i := 0; i < 10*0000; i++ {
 		testList = append(testList, rand.Intn(10000))
 	}
 }
